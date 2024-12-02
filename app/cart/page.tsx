@@ -1,6 +1,6 @@
 import CartPage from "@/components/CartPage";
 
-export default function Home() {
+export default function Cart() {
   return (
     <div>
       <CartPage />

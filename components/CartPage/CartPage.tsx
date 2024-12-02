@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import { CartItem } from "./components/CartItem";
 import { useCart } from "@/app/hooks/useCart";
 import { useDiscount } from "@/app/hooks/useDiscount";
+import { useOrder } from "@/app/hooks/useOrder";
 
 const CartPage = () => {
   const { cart, loading, updateQuantity, removeItem } = useCart();
@@ -20,6 +21,8 @@ const CartPage = () => {
     applyDiscount,
     requestDiscountCode,
   } = useDiscount();
+
+  const { placeOrder } = useOrder();
 
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -99,7 +102,19 @@ const CartPage = () => {
                   </div>
                 )}
               </div>
-              <Button className="w-full mt-4">Proceed to Checkout</Button>
+              <Button
+                onClick={() =>
+                  placeOrder(
+                    cart,
+                    subtotal,
+                    discountAmount,
+                    appliedDiscount?.discountCode || null
+                  )
+                }
+                className="w-full mt-4"
+              >
+                Proceed to Checkout
+              </Button>
             </div>
           </div>
         </div>

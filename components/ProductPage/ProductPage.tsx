@@ -2,8 +2,7 @@ import ProductCard from "@/components/ProductCard";
 import { Product, products } from "@/components/ProductCard/data/mockData";
 import axios from "axios";
 import React from "react";
-import { toast } from "react-hot-toast";
-import { v4 as uuidv4 } from "uuid"; // Import the uuid function
+import { v4 as uuidv4 } from "uuid";
 
 const ProductPage = () => {
   const handleAddToCart = async (product: Product) => {
@@ -20,7 +19,7 @@ const ProductPage = () => {
         cartData
       );
       if (res.status === 201 || res.data.success === true) {
-        toast.success("Added to cart");
+        alert("Added to cart");
       }
     } catch (error) {
       console.error("Error adding product to cart:", error);

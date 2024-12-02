@@ -39,7 +39,11 @@ const Header: FC = () => {
           </Button>
 
           {/* Notification & Help */}
-          <Button variant="outline" className="">
+          <Button
+            variant="outline"
+            className=""
+            onClick={() => (window.location.href = "/orders")}
+          >
             <Bell className="h-5 w-5" />
             <span>My Orders</span>
           </Button>
